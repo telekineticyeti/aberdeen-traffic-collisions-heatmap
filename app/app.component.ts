@@ -15,7 +15,7 @@ export class Artist {
 
 @Component({
   selector: 'app',
-  template: "<h1>arse</h1>"
+  template: "<h1>test</h1>"
 
 })
 
