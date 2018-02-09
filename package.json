@@ -1,0 +1,38 @@
+{
+  "name": "aberdeen-traffic-collisions-heatmap",
+  "version": "1.0.0",
+  "author": "paul.castle@gmail.com",
+  "description": "Plot a heatmap of traffic accidents using the datasets provided by ODIaberdeen.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/telekineticyeti/aberdeen-traffic-collisions-heatmap.git"
+  },
+  "scripts": {
+    "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
+    "watch": "concurrently --kill-others \"tsc -w\" \"nodemon app/*.js\"  \"lite-server\" "
+  },
+  "dependencies": {
+    "@angular/common": "2.0.0",
+    "@angular/compiler": "2.0.0",
+    "@angular/core": "2.0.0",
+    "@angular/forms": "2.0.0",
+    "@angular/http": "2.0.0",
+    "@angular/platform-browser": "2.0.0",
+    "@angular/platform-browser-dynamic": "2.0.0",
+    "@angular/router": "3.0.0",
+    "systemjs": "0.19.27",
+    "core-js": "2.4.1",
+    "reflect-metadata": "0.1.3",
+    "rxjs": "5.0.0-beta.12",
+    "zone.js": "0.6.23"
+  },
+  "devDependencies": {
+    "@types/core-js": "^0.9.34",
+    "@types/node": "^6.0.41",
+    "concurrently": "2.2.0",
+    "lite-server": "2.2.2",
+    "nodemon": "^1.14.12",
+    "rimraf": "2.5.4",
+    "typescript": "2.0.2"
+  }
+}
