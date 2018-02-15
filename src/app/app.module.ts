@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
+import { HttpModule } from '@angular/http';
 import { MaterialModule } from './material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -16,6 +17,7 @@ import { Test } from '../test/test.directive';
   ],
   imports: [
 	BrowserModule,
+  HttpModule,
 	MaterialModule,
 	BrowserAnimationsModule,
 	AgmCoreModule.forRoot({
