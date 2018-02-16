@@ -7,9 +7,13 @@
     </button>
   </mat-toolbar>
 
-  <agm-map [latitude]="lat" [longitude]="lng">
-    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-    <agm-marker [latitude]="57" [longitude]="-1"></agm-marker>
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="12">
+    <agm-marker [latitude]="57.129685" [longitude]="-2.127406" [label]="test"></agm-marker>
+    <agm-marker
+      *ngFor="let location of data"
+      [latitude]="location.Latitude"
+      [longitude]="location.Longitude"
+      [label]="location.Accident_Index"></agm-marker>
   </agm-map>
 
   <mat-menu x-position="before" #menu="matMenu">
@@ -21,7 +25,11 @@
     <button mat-button>All</button>
     <button mat-raised-button>Of</button>
     <button mat-raised-button color="primary">The</button>
-    <button mat-raised-button color="accent">Buttons</button>
+    <button mat-raised-button color="accent" (click)="additor()">Buttons</button>
+
+    <ul>
+      <li *ngFor="let item of data;">{{ item[0] }} - {{ item.Accident_Index }}</li>
+    </ul>
   </mat-card>
 
   <span class="done">

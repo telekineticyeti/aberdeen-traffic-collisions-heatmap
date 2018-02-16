@@ -16,7 +16,13 @@ export class AppComponent {
     this.http.get('data/abdn_RoadSafety_Accidents_2012.json')
       .subscribe(result => {
         this.data = result.json();
-        console.log(this.data);
       });
+  }
+
+  additor() {
+    this.data = [{
+      Latitude: "57.193756",
+      Longitude: "-2.093622"
+    }]
   }
 }
