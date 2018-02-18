@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Http } from '@angular/http';
+import { CollisionData } from "./collision-data.service";
 
 @Component({
   selector: 'app-root',
@@ -7,22 +7,28 @@ import { Http } from '@angular/http';
 })
 
 export class AppComponent {
-  lat: number = 57.149717;
-  lng: number = -2.094278;
+  constructor(private collisionData:CollisionData) {}
 
   data;
+  lat: number = 57.149717;
+  lng: number = -2.094278;
+  years_available = this.collisionData.yearsAvailable();
+  incident_count: number = 0;
+  private year_selected: number;
 
-  constructor(private http:Http) {
-    this.http.get('data/abdn_RoadSafety_Accidents_2012.json')
-      .subscribe(result => {
-        this.data = result.json();
-      });
+  ngOnInit() {
+    this.changeYear(this.years_available[0]);
   }
 
-  additor() {
-    this.data = [{
-      Latitude: "57.193756",
-      Longitude: "-2.093622"
-    }]
+  changeYear(year) {
+    this.year_selected = year;
+    this.collisionData.get(year).subscribe(result => {
+      this.data = result;
+      this.incident_count = result.length;
+    });
+  }
+
+  aboutDialog() {
+    console.log("tba");
   }
 }

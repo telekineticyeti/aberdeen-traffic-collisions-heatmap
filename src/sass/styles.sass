@@ -6,6 +6,8 @@ body
 	font-family: Roboto, sans-serif
 	// background: red
 
+.title
+	flex: 1 1 auto
 mat-card
 	max-width: 80%
 	margin: 2em auto
@@ -14,11 +16,15 @@ mat-card
 mat-toolbar-row
 	justify-content: space-between
 
-.done
-	position: fixed
-	bottom: 20px
-	right: 20px
-	color: white
-
 agm-map
-	height: 300px
+	height: 400px
+
+ul.incident_list
+	list-style-type: none
+	margin: 0
+	padding: 0
+	li
+		display: inline-block
+		margin: 5px
+		outline: 1px dashed rgba(black, .15)
+		font-size: 9px

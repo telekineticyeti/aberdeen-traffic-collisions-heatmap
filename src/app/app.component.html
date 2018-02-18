@@ -1,11 +1,20 @@
 <div>
   <mat-toolbar color="primary">
-    <span>Collision heatmap</span>
-
+    <span class="title">Aberdeen Traffic Collision Heatmap</span>
     <button mat-icon-button [mat-menu-trigger-for]="menu">
       <mat-icon>more_vert</mat-icon>
     </button>
   </mat-toolbar>
+
+  <mat-menu x-position="before" #menu="matMenu">
+    <button
+      mat-menu-item
+      *ngFor='let year of years_available'
+      (click)='changeYear(year)'>
+        Data for {{year}}
+    </button>
+    <button mat-menu-item (click)='aboutDialog()'>About</button>
+  </mat-menu>
 
   <agm-map [latitude]="lat" [longitude]="lng" [zoom]="12">
     <agm-marker [latitude]="57.129685" [longitude]="-2.127406" [label]="test"></agm-marker>
@@ -13,28 +22,15 @@
       *ngFor="let location of data"
       [latitude]="location.Latitude"
       [longitude]="location.Longitude"
-      [label]="location.Accident_Index"></agm-marker>
+    ></agm-marker>
   </agm-map>
 
-  <mat-menu x-position="before" #menu="matMenu">
-    <button mat-menu-item>Option 1</button>
-    <button mat-menu-item>Option 2</button>
-  </mat-menu>
-
   <mat-card>
-    <button mat-button>All</button>
-    <button mat-raised-button>Of</button>
-    <button mat-raised-button color="primary">The</button>
-    <button mat-raised-button color="accent" (click)="additor()">Buttons</button>
+    <h3>Showing data for {{ incident_count }} incidents in {{year_selected}}.</h3>
 
-    <ul>
-      <li *ngFor="let item of data;">{{ item[0] }} - {{ item.Accident_Index }}</li>
+    <ul class="incident_list">
+      <li *ngFor="let item of data;">{{ item.Accident_Index }}</li>
     </ul>
   </mat-card>
 
-  <span class="done">
-    <button mat-fab>
-      <mat-icon>check circle</mat-icon>
-    </button>
-  </span>
 </div>
