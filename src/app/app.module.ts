@@ -6,11 +6,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AgmCoreModule } from '@agm/core';
 
 import { AppComponent } from './app.component';
+import { MapMarkerInfo } from './mapmarker-info.component';
 import { CollisionData } from "./collision-data.service";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MapMarkerInfo
   ],
   imports: [
 	BrowserModule,

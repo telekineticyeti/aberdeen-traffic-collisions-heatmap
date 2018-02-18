@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MapMarkerInfo } from './mapmarker-info.component';
 import { CollisionData } from "./collision-data.service";
 
 @Component({
@@ -14,8 +15,12 @@ export class AppComponent {
   lng: number = -2.094278;
   years_available = this.collisionData.yearsAvailable();
   incident_count: number = 0;
-  private year_selected: number;
+  year_selected: number;
 
+
+  /** 
+   * Display the first year on load
+  */
   ngOnInit() {
     this.changeYear(this.years_available[0]);
   }
@@ -26,6 +31,17 @@ export class AppComponent {
       this.data = result;
       this.incident_count = result.length;
     });
+  }
+
+  infoWindowOpened = null;
+
+  /**
+   * Automate closing of a marker's info window when another is activated
+   */
+  clickedMarker(label: string, infoWindow, index: number) {
+    if (this.infoWindowOpened === infoWindow) return;
+    if (this.infoWindowOpened !== null) this.infoWindowOpened.close();
+    this.infoWindowOpened = infoWindow;
   }
 
   aboutDialog() {

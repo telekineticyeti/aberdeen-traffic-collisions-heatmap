@@ -17,20 +17,20 @@
   </mat-menu>
 
   <agm-map [latitude]="lat" [longitude]="lng" [zoom]="12">
-    <agm-marker [latitude]="57.129685" [longitude]="-2.127406" [label]="test"></agm-marker>
     <agm-marker
-      *ngFor="let location of data"
+      *ngFor="let location of data; let i = index"
+      (markerClick)="clickedMarker(location.label, infoWindow, i)"
       [latitude]="location.Latitude"
       [longitude]="location.Longitude"
-    ></agm-marker>
+      [iconUrl]="'https://chart.googleapis.com/chart?chst=d_map_pin_icon&chld=glyphish_walk|FFFF00'">
+      <agm-info-window #infoWindow>
+        <markerInfo [location]=location></markerInfo>
+      </agm-info-window>
+    </agm-marker>
   </agm-map>
 
   <mat-card>
     <h3>Showing data for {{ incident_count }} incidents in {{year_selected}}.</h3>
-
-    <ul class="incident_list">
-      <li *ngFor="let item of data;">{{ item.Accident_Index }}</li>
-    </ul>
   </mat-card>
 
 </div>
