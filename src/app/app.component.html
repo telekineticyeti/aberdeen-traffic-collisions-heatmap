@@ -22,9 +22,11 @@
       (markerClick)="clickedMarker(location.label, infoWindow, i)"
       [latitude]="location.Latitude"
       [longitude]="location.Longitude"
-      [iconUrl]="'https://chart.googleapis.com/chart?chst=d_map_pin_icon&chld=glyphish_walk|FFFF00'">
+      [iconUrl]="generatePin(location.Accident_Severity)">
       <agm-info-window #infoWindow>
-        <markerInfo [location]=location></markerInfo>
+        <markerInfo
+          [location]=location>
+        </markerInfo>
       </agm-info-window>
     </agm-marker>
   </agm-map>

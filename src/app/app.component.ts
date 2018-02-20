@@ -36,6 +36,31 @@ export class AppComponent {
   }
 
   /**
+   * Generate a map pin using Google charts API that gives information about the accident.
+   * Example: 'https://chart.googleapis.com/chart?chst=d_map_pin_icon&chld=glyphish_walk|FFFF00'
+   * @param severity
+   */
+  generatePin(severity) {
+    let output: string = 'https://chart.googleapis.com/chart?chst=d_map_pin_icon&chld=glyphish_walk|';
+
+    switch(severity) {
+      case "1": output += 'D92525'; break;
+      case "2": output += 'C1BA08'; break;
+      case "3": output += '179D0C'; break;
+      default: output += 'FFFFF';
+    }
+
+    // switch(severity) {
+    //   case "1": output += 'D92525'; break;
+    //   case "2": output += 'C1BA08'; break;
+    //   case "3": output += '179D0C'; break;
+    //   default: output += 'FFFFF';
+    // }
+
+    return output;
+  }
+
+  /**
    * Automate closing of a marker's info window when another is activated
    */
   clickedMarker(label: string, infoWindow, index: number) {

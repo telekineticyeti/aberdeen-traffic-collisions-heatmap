@@ -49,7 +49,7 @@ export class CollisionData {
             case "6": string = "Junction with more than 4 arms (mpr RAB)"; break;
             case "7": string = "Using private drive or entrance"; break;
             case "8": string = "Other"; break;
-            default: string =  "Other";
+            default: string =  null;
         }
         return string;
     }
@@ -61,7 +61,7 @@ export class CollisionData {
             case "2": string = "Automated traffic signal"; break;
             case "3": string = "Stop sign"; break;
             case "4": string = "Give way or uncontrolled"; break;
-            default: string = "Unknown";
+            default: string = null;
         }
         return string;
     }
@@ -117,7 +117,7 @@ export class CollisionData {
             case "7": string = "Fog or mist"; break;
             case "8": string = "Other"; break;
             case "9": string = "Unknown weather"; break;
-            default: string = "Unknown weather";
+            default: string = null;
         }
         return string;
     }
@@ -130,7 +130,7 @@ export class CollisionData {
             case "5": string = "Dark with unlit street lights"; break;
             case "6": string = "No Street Lights"; break;
             case "7": string = "Unknown lighting"; break;
-            default: string = "Unknown lighting";
+            default: string = null;
         }
         return string;
     }
@@ -138,12 +138,12 @@ export class CollisionData {
     roadSurfaceConditions(code:string) {
         let string;
         switch(code) {
-            case "1": string = "Dry"; break;
-            case "2": string = "Wet / Damp"; break;
-            case "3": string = "Snow"; break;
-            case "4": string = "Frost / Ice"; break;
-            case "5": string = "Flooded (surface water over 3cm deep)"; break;
-            default: string = "Unknown road conditions";
+            case "1": string = "dry roads"; break;
+            case "2": string = "wet/damp roads"; break;
+            case "3": string = "snowy roads"; break;
+            case "4": string = "frosty/iced over roads"; break;
+            case "5": string = "flooded road with surface water over 3cm deep"; break;
+            default: string = null;
         }
         return string;
     }
@@ -151,7 +151,7 @@ export class CollisionData {
     specialConditionsAtSite(code:string) {
         let string;
         switch(code) {
-            case "0": string = "None"; break;
+            case "0": string = null; break;
             case "1": string = "Auto traffic signal out"; break;
             case "2": string = "Auto traffic signal partially defective"; break;
             case "3": string = "Permanent road signing or marking defective or obscured"; break;
@@ -159,7 +159,7 @@ export class CollisionData {
             case "5": string = "Road surface defective"; break;
             case "6": string = "Oil or diesel"; break;
             case "7": string = "Mud"; break;
-            default: string = "Unknown special conditions";
+            default: string = null;
         }
         return string;
     }
@@ -167,25 +167,25 @@ export class CollisionData {
     carriagewayHazards(code:string) {
         let string;
         switch(code) {
-            case "0": string = "None"; break;
+            case "0": string = null; break;
             case "1": string = "Dislodged vehicle load in carriageway"; break;
             case "2": string = "Other object in carriageway"; break;
             case "3": string = "Involvement with previous accident"; break;
             case "6": string = "Pedestrian in carriageway - not injured"; break;
             case "7": string = "Any animal in carriageway (except ridden horse)"; break;
-            default: string = "Unknown carriageway hazards";
+            default: string = null;
         }
         return string;
     }
 
     policeOfficerAttendScene(code:string) {
-        let string;
+        let boolean;
         switch(code) {
-            case "1": string = "Yes"; break;
-            case "2": string = "No"; break;
-            default: string = "Unknown";
+            case "1": boolean = true; break;
+            case "2": boolean = false; break;
+            default: boolean = false;
         }
-        return string;
+        return boolean;
     }
 
     accidentSeverity(code:string) {
@@ -194,7 +194,7 @@ export class CollisionData {
             case "1": string = "Fatal"; break;
             case "2": string = "Serious"; break;
             case "3": string = "Slight"; break;
-            default: string = "Unknown";
+            default: string = null;
         }
         return string;
     }

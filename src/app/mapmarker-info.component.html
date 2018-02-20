@@ -1,16 +1,59 @@
 <strong>Accident index {{ location.Accident_Index }}</strong>
 <hr>
 <table width="100%" border="0">
-<tr>
-    <td width="50%"><strong>Junction Type</strong></td>
-    <td width="50%">{{ this.collisionData.junctionDetail(location.Junction_Detail) }}</td>
-</tr>
-<tr>
-    <td><strong>Junction Control</strong></td>
-    <td>{{ this.collisionData.junctionControl(location.Junction_Control) }}</td>
-</tr>
-<tr>
-    <td><strong>Road Type</strong></td>
-    <td>{{ this.collisionData.roadType(location.Road_Type) }}</td>
-</tr>
+
+    <tr *ngIf='this.collisionData.junctionDetail(location.Junction_Detail) !== null'>
+        <td width="50%"><strong>Junction Type</strong></td>
+        <td width="50%">{{ this.collisionData.junctionDetail(location.Junction_Detail) }}</td>
+    </tr>
+
+    <tr *ngIf='this.collisionData.junctionControl(location.Junction_Control) !== null'>
+        <td><strong>Junction Control</strong></td>
+        <td>{{ this.collisionData.junctionControl(location.Junction_Control) }}</td>
+    </tr>
+
+    <tr>
+        <td><strong>Road Type</strong></td>
+        <td>{{ this.collisionData.roadType(location.Road_Type) }}</td>
+    </tr>
+
+    <tr *ngIf='this.collisionData.weatherConditions(location.Weather_Conditions) !== null'>
+        <td><strong>Weather/Road Conditions</strong></td>
+        <td>
+            {{ this.collisionData.weatherConditions(location.Weather_Conditions) }}
+            <span *ngIf='this.collisionData.roadSurfaceConditions(location.Road_Surface_Conditions) !== null'>
+                with {{ this.collisionData.roadSurfaceConditions(location.Road_Surface_Conditions) }}
+            </span>
+        </td>
+    </tr>
+
+    <tr *ngIf='this.collisionData.lightConditions(location.Light_Conditions) !== null'>
+        <td><strong>Light Conditions</strong></td>
+        <td>{{ this.collisionData.lightConditions(location.Light_Conditions) }}</td>
+    </tr>
+
+    <tr *ngIf='
+        this.collisionData.specialConditionsAtSite(location.Special_Conditions_at_Site) !== null
+        || this.collisionData.carriagewayHazards(location.Carriageway_Hazards) !== null
+    '>
+        <td>
+            <strong>Special Conditions or hazards:</strong>
+        </td>
+        <td>
+            <div *ngIf='this.collisionData.specialConditionsAtSite(location.Special_Conditions_at_Site) !== null'>
+                {{ this.collisionData.specialConditionsAtSite(location.Special_Conditions_at_Site) }}
+            </div>
+            <div *ngIf='this.collisionData.carriagewayHazards(location.Carriageway_Hazards) !== null'>
+                {{ this.collisionData.carriagewayHazards(location.Carriageway_Hazards) }}
+            </div>
+        </td>
+    </tr>
+
+    <tr *ngIf='this.collisionData.policeOfficerAttendScene(location.Did_Police_Officer_Attend_Scene_of_Accident) === true; else content no_police_attended'>
+        <td colspan="2"><strong>A police officer attended this scene.</strong></td>
+    </tr>
 </table>
+
+<ng-template #no_police_attended>
+    <td colspan="2"><strong>No police attended this scene.</strong></td>    
+</ng-template>
