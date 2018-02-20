@@ -9,5 +9,6 @@ import { CollisionData } from "./collision-data.service";
 
 export class MapMarkerInfo {
   public location;
+  public content;
   constructor(public collisionData:CollisionData) {}
 }
